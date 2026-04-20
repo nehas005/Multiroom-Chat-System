@@ -3,6 +3,10 @@
 A secure multi-client chat application built using Python sockets and SSL encryption.
 This system supports chat rooms, private messaging, file transfer, and admin controls.
 
+# Team members: 
+Neha Sachin - PES1UG24CS296
+Mutnuri Nagavalli Sri Sravya - PES1UG24CS284
+Nishitha Sathish - PES1UG24CS304
 ---
 
 ## 🚀 Features
