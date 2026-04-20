@@ -8,7 +8,6 @@ PORT = 5556
 rooms = {}  
 room_locks = {}
 
-
 # PRINT ALL ROOMS (SERVER SIDE)
 def print_rooms():
     print("\nActive Chat Rooms:")
@@ -19,7 +18,6 @@ def print_rooms():
             users = [f"{n}({s})" for (_, n, s) in data["users"]]
             print(f"{room} → {len(users)} users → {users}")
     print()
-
 
 #BROADCAST
 def broadcast(room, message, sender):
@@ -32,7 +30,6 @@ def broadcast(room, message, sender):
                     client.close()
                     rooms[room]["users"] = [(c, n, s) for (c, n, s) in rooms[room]["users"] if c != client]
 
-
 #PRIVATE MESSAGE
 def send_private(room, sender_name, sender_srn, target_srn, message):
     for client, name, srn in rooms[room]["users"]:
@@ -44,11 +41,9 @@ def send_private(room, sender_name, sender_srn, target_srn, message):
                 return False
     return False
 
-
 #HANDLE CLIENT
 def handle_client(conn):
     name, srn, room = "", "", ""
-
     try:
         conn.send(b"1. Create Room\n2. Join Room\nChoice: ")
         choice = conn.recv(1024).decode().strip()
@@ -208,7 +203,6 @@ def handle_client(conn):
         print(f"[DISCONNECT] {name}")
         print_rooms()
 
-
 #SERVER
 def start_server():
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
@@ -228,7 +222,6 @@ def start_server():
 
         print(f"[NEW] {addr}")
         threading.Thread(target=handle_client, args=(secure,)).start()
-
 
 if __name__ == "__main__":
     start_server()
