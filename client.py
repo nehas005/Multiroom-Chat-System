@@ -7,7 +7,6 @@ import platform
 HOST = "10.30.203.149"  
 PORT = 5556
 
-
 def open_file(filename):
     try:
         if platform.system() == "Darwin":  # Mac
@@ -16,7 +15,6 @@ def open_file(filename):
             os.system(f"start {filename}")
     except:
         pass
-
 
 def receive_messages(sock):
     while True:
@@ -54,7 +52,6 @@ def receive_messages(sock):
         except:
             print("Disconnected from server")
             break
-
 
 def start_client():
     context = ssl.create_default_context()
@@ -104,7 +101,6 @@ def start_client():
 
         # NORMAL / COMMANDS
         secure_sock.send(msg.encode())
-
 
 if __name__ == "__main__":
     start_client()
